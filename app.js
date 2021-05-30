@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { getHolidaysIn } = require('./lib/xmlHolidayDataSource');
+const dataSource = require('./lib/openApiHolidayDataSource');
 const { format, parse } = require('date-fns');
 
 const app = express();
@@ -20,7 +20,7 @@ app.get('/holidays', async (req, res) => {
       dates: []
     });
   } else {
-    const dates = await getHolidaysIn(parse(`${year}/${month}/01`, 'yyyy/MM/dd', new Date()));
+    const dates = await dataSource.getHolidaysIn(parse(`${year}/${month}/01`, 'yyyy/MM/dd', new Date()));
     res.json({
       dates: dates.map(date => format(date, 'yyyyMMdd'))
     });
