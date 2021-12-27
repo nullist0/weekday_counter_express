@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/out-of-existence/weekday_counter_express.git"
+    "url": "git+https://github.com/nullist0/weekday_counter_express.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/out-of-existence/weekday_counter_express/issues"
+    "url": "https://github.com/nullist0/weekday_counter_express/issues"
   },
-  "homepage": "https://github.com/out-of-existence/weekday_counter_express#readme",
+  "homepage": "https://github.com/nullist0/weekday_counter_express#readme",
   "dependencies": {
     "axios": "^0.21.1",
     "axios-cache-adapter": "^2.7.3",

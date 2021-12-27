@@ -7,7 +7,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors({
-  origin: "https://out-of-existence.github.io",
+  origin: "https://nullist0.github.io",
   optionsSuccessStatus: 200
 }));
 
