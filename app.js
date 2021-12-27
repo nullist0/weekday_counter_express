@@ -17,9 +17,7 @@ app.get('/holidays/:year/:month', async (req, res) => {
   const holidayService = new HolidayService(holidayDataSource);
   const holidayResponse = await getHolidays(req.params, holidayService);
 
-  res.status(200).json({
-    dates: holidayResponse.holidays
-  });
+  res.status(200).json(holidayResponse);
 });
 
 app.listen(port);
