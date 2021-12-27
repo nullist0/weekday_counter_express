@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const dataSource = require('./lib/openApiHolidayDataSource');
-const { format, parse } = require('date-fns');
+const { OpenAPIHolidayDataSource } = require('./lib/holiday_data_source/open_api_holiday_data_source');
+const { HolidayService } = require('./lib/holiday_service/holiday_service');
+const { getHolidays } = require('./lib/routers');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -11,20 +12,14 @@ app.use(cors({
   optionsSuccessStatus: 200
 }));
 
-app.get('/holidays', async (req, res) => {
-  const { year, month } = req.query;
+app.get('/holidays/:year/:month', async (req, res) => {
+  const holidayDataSource = new OpenAPIHolidayDataSource();
+  const holidayService = new HolidayService(holidayDataSource);
+  const holidayResponse = await getHolidays(req.params, holidayService);
 
-  if (year === undefined || month === undefined) {
-    res.status(404);
-    res.json({
-      dates: []
-    });
-  } else {
-    const dates = await dataSource.getHolidaysIn(parse(`${year}/${month}/01`, 'yyyy/MM/dd', new Date()));
-    res.json({
-      dates: dates.map(date => format(date, 'yyyyMMdd'))
-    });
-  }
+  res.status(200).json({
+    dates: holidayResponse.holidays
+  });
 });
 
 app.listen(port);
