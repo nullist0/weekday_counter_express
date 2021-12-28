@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/nullist0/weekday_counter_express#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "axios-cache-adapter": "^2.7.3",
     "cors": "^2.8.5",
     "express": "^4.17.1"
