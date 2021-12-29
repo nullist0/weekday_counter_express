@@ -8,7 +8,7 @@
 
 ```shell
 $ export SERVICE_KEY=${open API의 SERVICE KEY}
-$ 
+$ npm start
 $ curl http://localhost:5000/holidays/2021/10
 {"holidays":[{"year":2021,"month":10,"day":3},{"year":2021,"month":10,"day":4},{"year":2021,"month":10,"day":9},{"year":2021,"month":10,"day":11}]}
 ```
